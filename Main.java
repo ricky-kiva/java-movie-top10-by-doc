@@ -22,8 +22,8 @@ public class Main {
         String status = "continue";
     
         while (status.equals("continue")) {
-            int choice = (promptForChoice(scanner));
-            Movie movie = store.getMovie(choice);
+            int choice = ((promptForChoice(scanner))-1);
+            Movie movie = store.getMovie((choice));
             double rating = promptForRating(scanner, movie.getName());
     
             movie.setRating(rating);
@@ -37,11 +37,11 @@ public class Main {
 
     public static int promptForChoice(Scanner scanner) {
         while (true) {
-            System.out.print("\nPlease choose an integer between 0 - 9: ");
+            System.out.print("\nPlease choose an integer between 1 - 10: ");
 
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
-                if (choice < 0 || choice > 9) {
+                if (choice < 1 || choice > 10) {
                     continue;
                 }
                 return choice;
@@ -54,7 +54,7 @@ public class Main {
     }
 
     public static boolean incorrectChoice(int choice) {
-        if (choice < 0 || choice > 9) {
+        if (choice < 1 || choice > 10) {
             return true;
         }
         return false;
