@@ -40,12 +40,16 @@ public class Main {
         while (true) {
             System.out.print("\nPlease choose an integer between 0 - 9: ");
 
-            // 1. Anticipate the user not entering an integer.
+            if (scanner.hasNextInt()) {
+                int choice = scanner.nextInt();
+                if (choice < 0 || choice > 9) {
+                    continue;
+                }
+                return choice;
+            } else {
+                continue;
+            }
 
-            int choice = scanner.nextInt();
-
-            // 2. Anticipate the choice being incorrect.
-            return choice;
         }
     }
 
