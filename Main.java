@@ -1,5 +1,6 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -75,15 +76,23 @@ public class Main {
     public static void loadMovies(String fileName) throws FileNotFoundException {
         FileInputStream fis = new FileInputStream(fileName);
         Scanner scanFile = new Scanner(fis);
-
+        scanFile.useDelimiter("[-]{2}");
+        int index = 0;
+        
         while (scanFile.hasNextLine()) {
-            // TODO
+
+            String nameInFile = scanFile.next();
+            String formatInFile = scanFile.next();
+            Double ratingInFile = Double.parseDouble((scanFile.nextLine()).substring(2));
+
+            System.out.println(index + ".\t" + ratingInFile + "\t" + formatInFile + "\t" + nameInFile);
+            index++;
         }
         scanFile.close();
     }
 
     public static void printStore() {
-        System.out.println("********************************MOVIE STORE*******************************");
+        System.out.println("\n********************************MOVIE STORE*******************************\n");
         System.out.println(store);
     }
 
