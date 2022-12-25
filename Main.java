@@ -46,6 +46,7 @@ public class Main {
                 }
                 return choice;
             } else {
+                scanner.next();
                 continue;
             }
 
@@ -70,6 +71,7 @@ public class Main {
                 }
                 return rating;
             } else {
+                scanner.next();
                 continue;
             }
 
