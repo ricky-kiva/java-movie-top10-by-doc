@@ -1,6 +1,5 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -64,13 +63,16 @@ public class Main {
         while (true) {
             System.out.print("\nSet a new rating for " + name + ": ");
             
-            // 1. Anticipate the user not entering a double.
+            if (scanner.hasNextDouble()) {
+                double rating = scanner.nextDouble();
+                if (rating < 0 || rating > 10) {
+                    continue;
+                }
+                return rating;
+            } else {
+                continue;
+            }
 
-            double rating = scanner.nextDouble();
-            
-            // 2. Anticipate the rating being incorrect.
-
-            return rating;
          }
     }
 
