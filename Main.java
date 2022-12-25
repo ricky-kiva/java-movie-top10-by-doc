@@ -61,7 +61,7 @@ public class Main {
 
     public static double promptForRating(Scanner scanner, String name) {
         while (true) {
-            System.out.print("\nSet a new rating for " + name + ": ");
+            System.out.print("\nSet a new rating for '" + name + "': ");
             
             if (scanner.hasNextDouble()) {
                 double rating = scanner.nextDouble();
@@ -87,16 +87,14 @@ public class Main {
         FileInputStream fis = new FileInputStream(fileName);
         Scanner scanFile = new Scanner(fis);
         scanFile.useDelimiter("[-]{2}");
-        int index = 0;
         
         while (scanFile.hasNextLine()) {
 
             String nameInFile = scanFile.next();
             String formatInFile = scanFile.next();
-            Double ratingInFile = Double.parseDouble((scanFile.nextLine()).substring(2));
+            double ratingInFile = Double.parseDouble((scanFile.nextLine()).substring(2));
 
-            System.out.println(index + ".\t" + ratingInFile + "\t" + formatInFile + "\t" + nameInFile);
-            index++;
+            store.addMovie(new Movie(nameInFile, formatInFile, ratingInFile));
         }
         scanFile.close();
     }

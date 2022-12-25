@@ -23,8 +23,10 @@ public class Store {
 
     public String toString() {
         String temp = "";
+        int index = 0;
         for (Movie movie : movies) {
-            temp += movie.toString() + "\n";
+            temp += index + ".\t" + movie.toString() + "\n";
+            index++;
         }
         return temp;
     }
